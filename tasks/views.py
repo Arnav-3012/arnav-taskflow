@@ -13,7 +13,10 @@ def task_list(request):
         return redirect("task_list")
 
     tasks = Task.objects.filter(owner=request.user).order_by("-created_at")
-    return render(request, "tasks/task_list.html", {"tasks": tasks})
+    priority_filter = request.GET.get("priority")
+    if priority_filter in dict(Task.PRIORITY_CHOICES):
+        tasks = tasks.filter(priority=priority_filter)
+    return render(request, "tasks/task_list.html", {"tasks": tasks, "priority_filter": priority_filter})
 
 @login_required
 def toggle_task(request, task_id):
