@@ -34,6 +34,13 @@
     <button type="submit" class="btn" style="background:var(--text-muted)">Clear completed</button>
   </form>
 
+  <nav class="filters">
+    <a href="{% url 'task_list' %}" class="filter{% if not priority_filter %} active{% endif %}">All</a>
+    <a href="?priority=low" class="filter{% if priority_filter == 'low' %} active{% endif %}">Low</a>
+    <a href="?priority=medium" class="filter{% if priority_filter == 'medium' %} active{% endif %}">Medium</a>
+    <a href="?priority=high" class="filter{% if priority_filter == 'high' %} active{% endif %}">High</a>
+  </nav>
+
   <ul id="task-list">
     {% for task in tasks %}
       <li data-done="{{ task.done|yesno:'true,false' }}">

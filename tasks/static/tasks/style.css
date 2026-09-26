@@ -52,3 +52,7 @@ li[data-done="true"] .task-title { text-decoration:line-through; color:var(--tex
 @media (max-width:420px) {
   form#add-form { flex-direction:column; }
 }
+
+.filters { display:flex; gap:.4rem; margin:1rem 0; }
+.filter { padding:.3rem .8rem; border:1px solid var(--border); border-radius:999px; font-size:.8rem; color:var(--text); text-decoration:none; background:var(--bg); }
+.filter.active { background:var(--accent); border-color:var(--accent); color:#fff; }
